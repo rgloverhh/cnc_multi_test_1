@@ -65,3 +65,6 @@ def main():
         st.caption("Model: eXtreme Gradient Boosting (XGBoost)") 
         st.caption("Data timeframes: 6/3/2022-6/19/2024")
         st.caption("Current accuracy: 86%")
+
+if __name__ == "__main__":
+    main()
