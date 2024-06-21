@@ -43,7 +43,7 @@ def main():
         elif sl_prediction >= 100:
             st.subheader("100%")
         else:
-            st.subheader("%.2f{sl_prediction}%")
+            st.subheader(f"{sl_prediction}%")
         st.caption("Model: eXtreme Gradient Boosting (XGBoost)")
         st.caption("Data timeframes: 10/3/2022-6/14/2024")
         st.caption("Current accuracy: 90%")
@@ -63,7 +63,7 @@ def main():
         elif sl_prediction >= 100:
             st.subheader("100%")
         else:
-            st.subheader("%.2f{sl_prediction}%")
+            st.subheader(f"{sl_prediction}%")
         st.caption("Model: eXtreme Gradient Boosting (XGBoost)") 
         st.caption("Data timeframes: 6/3/2022-6/19/2024")
         st.caption("Current accuracy: 86%")
