@@ -55,7 +55,7 @@ def main():
         ftes_logged_in = st.number_input(label="Choose the total number of FTEs logged in for the day (use PowerBI CNC Call Metrics Staffing as a guide)", min_value=7.0, max_value=17.0, step=0.5, value=12.0)
         not_ready_con = not_ready/100
         
-        sl_prediction_temp = predict_pcp(calls_offered, aht, not_ready_con, ftes_logged_in)
+        sl_prediction_temp = predict_cc(calls_offered, aht, not_ready_con, ftes_logged_in)
         sl_prediction = round((sl_prediction_temp*100),1)
         st.header("Cancer Care Service Level Prediction")
         if sl_prediction <= 0:
