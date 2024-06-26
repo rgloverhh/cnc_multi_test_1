@@ -30,10 +30,11 @@ def predict_hc(input1, input2, input3, input4):
 def main():
     st.title("CNC Service Level Predictor")
     st.text("Please fill in the responses below to predict service level")
-    st.caption("Default values are daily average from May 2024")
     st.sidebar.header("Choose your department")
+    selected_model = st.sidebar.radio("Select department:", ["Primary Care", "Cancer Care", "Heart Care"])
+    st.sidebar.caption("Default values are daily average from May 2024")
 
-    if st.sidebar.radio("Select department:", ["Primary Care", "Cancer Care", "Heart Care"]) == "Primary Care":
+    if selected_model == "Primary Care":
         calls_offered = st.number_input(label="Enter a call volume between 500 and 3000", min_value=500, max_value=4000, step=10, value=1970)
         aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5.5 = 5min 30sec -> 0.05 = 3 sec)", min_value=4.0, max_value=7.0, step=0.05, value=5.50)
         not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15.0, max_value=35.0, step=0.1, value=22.7)
@@ -53,7 +54,7 @@ def main():
         st.sidebar.caption("Data timeframes: 10/3/2022-6/14/2024")
         st.sidebar.caption("Current accuracy: 90%")
 
-    elif st.sidebar.radio("Select department:", ["Primary Care", "Cancer Care", "Heart Care"]) == "Cancer Care":
+    elif selected_model == "Cancer Care":
         calls_offered = st.number_input(label="Enter a call volume between 300 and 1400", min_value=300, max_value=1400, step=10, value=890)
         aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5.5 = 5min 30sec -> 0.05 = 3 sec)", min_value=5.0, max_value=8.0, step=0.05, value=6.00)
         not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15.0, max_value=35.0, step=0.1, value=25.0)
@@ -73,7 +74,7 @@ def main():
         st.sidebar.caption("Data timeframes: 6/3/2022-6/19/2024")
         st.sidebar.caption("Current accuracy: 86%")
 
-    else:
+    elif selected_model == 'Heart Care':
         calls_offered = st.number_input(label="Enter a call volume between 300 and 1400", min_value=300, max_value=1400, step=10, value=796)
         aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5.5 = 5min 30sec -> 0.05 = 3 sec)", min_value=4.0, max_value=7.0, step=0.05, value=5.25)
         not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15.0, max_value=35.0, step=0.1, value=21.5)
