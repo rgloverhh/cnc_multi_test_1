@@ -42,7 +42,7 @@ def main():
         not_ready_con = not_ready/100
         
         sl_prediction_temp = predict_pcp(calls_offered, aht, not_ready_con, ftes_logged_in)
-        sl_prediction = round((sl_prediction_temp*100),1)
+        sl_prediction = sl_prediction_temp*100
         st.header("Primary Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
@@ -62,7 +62,7 @@ def main():
         not_ready_con = not_ready/100
         
         sl_prediction_temp = predict_cc(calls_offered, aht, not_ready_con, ftes_logged_in)
-        sl_prediction = round((sl_prediction_temp*100),1)
+        sl_prediction = sl_prediction_temp*100
         st.header("Cancer Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
@@ -82,8 +82,7 @@ def main():
         not_ready_con = not_ready/100
         
         sl_prediction_temp = predict_hc(calls_offered, aht, not_ready_con, ftes_logged_in)
-        sl_prediction_mult = sl_prediction_temp*100
-        sl_prediction = round(sl_prediction_mult,1)
+        sl_prediction = sl_prediction_temp*100
         st.header("Heart Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
