@@ -30,9 +30,9 @@ def predict_hc(input1, input2, input3, input4):
 def main():
     st.title("CNC Service Level Predictor")
     st.text("Please fill in the responses below to predict service level")
+    st.caption("Default values are daily average from May 2024")
     st.sidebar.header("Choose your department")
     selected_model = st.sidebar.radio("Select department:", ["Primary Care", "Cancer Care", "Heart Care"])
-    st.sidebar.caption("Default values are daily average from May 2024")
 
     if selected_model == "Primary Care":
         calls_offered = st.number_input(label="Enter a call volume between 500 and 3000", min_value=500, max_value=4000, step=10, value=1970)
