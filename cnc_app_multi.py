@@ -73,7 +73,7 @@ def main():
         st.sidebar.caption("Data timeframes: 6/3/2022-6/19/2024")
         st.sidebar.caption("Current accuracy: 86%")
 
-    elif st.sidebar.radio("Select department:", ["Primary Care", "Cancer Care", "Heart Care"]) == "Heart Care":
+    else:
         calls_offered = st.number_input(label="Enter a call volume between 300 and 1400", min_value=300, max_value=1400, step=10, value=796)
         aht = st.number_input(label="Average Handle Time (in decimal format, i.e. 5.5 = 5min 30sec -> 0.05 = 3 sec)", min_value=4.0, max_value=7.0, step=0.05, value=5.25)
         not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15.0, max_value=35.0, step=0.1, value=21.5)
