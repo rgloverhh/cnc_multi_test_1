@@ -47,14 +47,14 @@ def main():
         not_ready_con = not_ready/100
         sl_prediction_temp = predict_pcp(calls_offered, aht, not_ready_con, ftes_logged_in)
         sl_prediction = sl_prediction_temp*100
-        sl_prediction = round(sl_prediction,1)
+        rounded_sl = round(sl_prediction,1)
         st.header("Primary Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
         elif sl_prediction >= 100:
             st.subheader("100%")
         else:
-            st.subheader(f"{sl_prediction}%")
+            st.subheader(f"{rounded_sl}%")
         st.sidebar.caption("Model: eXtreme Gradient Boosting (XGBoost)")
         st.sidebar.caption("Data timeframes: 10/3/2022-6/14/2024")
         st.sidebar.caption("Current accuracy: 90%")
@@ -68,7 +68,6 @@ def main():
         not_ready_con = not_ready/100
         sl_prediction_temp = predict_cc(calls_offered, aht, not_ready_con, ftes_logged_in)
         sl_prediction = sl_prediction_temp*100
-        sl_prediction = round(sl_prediction,1)
         st.header("Cancer Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
@@ -89,7 +88,6 @@ def main():
         not_ready_con = not_ready/100
         sl_prediction_temp = predict_hc(calls_offered, aht, not_ready_con, ftes_logged_in)
         sl_prediction = sl_prediction_temp*100
-        sl_prediction = round(sl_prediction,1)
         st.header("Heart Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
@@ -110,7 +108,6 @@ def main():
         not_ready_con = not_ready/100
         sl_prediction_temp = predict_ma(calls_offered, aht, not_ready_con, ftes_logged_in)
         sl_prediction = sl_prediction_temp*100
-        sl_prediction = round(sl_prediction,1)
         st.header("MA CRT Team Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
