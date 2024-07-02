@@ -40,11 +40,15 @@ def main():
     selected_model = st.sidebar.radio("Select department:", ["Primary Care", "Cancer Care", "Heart Care", "MA CRT Team"])
 
     if selected_model == "Primary Care":
+        st.text("1. Call Volumes")
         calls_offered = st.number_input(label="Enter a call volume between 500 and 3000", min_value=500, max_value=4000, step=10, value=1970)
-        aht_minutes = st.number_input(label="Average Handle Time (minutes)", min_value=4, max_value=7, step=1, value=5)
-        aht_seconds = st.number_input(label="Average Handle Time (seconds)", min_value=0, max_value=59, step=2, value=30)
-        not_ready = st.number_input(label="Not Ready Rate (%)", min_value=15.0, max_value=35.0, step=0.1, value=22.7)
-        ftes_logged_in = st.number_input(label="Choose the total number of FTEs logged in for the day (use PowerBI CNC Call Metrics Staffing as a guide)", min_value=20.0, max_value=40.0, step=0.5, value=25.0)
+        st.text("2. Average Handle Time")
+        aht_minutes = st.number_input(label="Enter AHT minutes between 4 and 6", min_value=4, max_value=6, step=1, value=5)
+        aht_seconds = st.number_input(label="Enter AHT seconds between 0 and 59", min_value=0, max_value=59, step=1, value=30)
+        st.text("3. Not Ready Rate")
+        not_ready = st.number_input(label="Enter Not Ready Rate between 15 and 35", min_value=15.0, max_value=35.0, step=0.1, value=22.7)
+        st.text("4. FTEs Logged In (Use Power BI CNC Call Metrics Staffing as a guide)")
+        ftes_logged_in = st.number_input(label="Enter FTEs between 20 and 40", min_value=20.0, max_value=40.0, step=0.5, value=25.0)
         not_ready_con = not_ready/100
         aht = aht_minutes + (aht_seconds/60)
         sl_prediction_temp = predict_pcp(calls_offered, aht, not_ready_con, ftes_logged_in)
