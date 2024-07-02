@@ -46,15 +46,14 @@ def main():
         ftes_logged_in = st.number_input(label="Choose the total number of FTEs logged in for the day (use PowerBI CNC Call Metrics Staffing as a guide)", min_value=20.0, max_value=40.0, step=0.5, value=25.0)
         not_ready_con = not_ready/100
         sl_prediction_temp = predict_pcp(calls_offered, aht, not_ready_con, ftes_logged_in)
-        sl_prediction = sl_prediction_temp*100
-        rounded_sl = round(sl_prediction,1)
+        sl_prediction = round(sl_prediction_temp,1)*100
         st.header("Primary Care Service Level Prediction")
         if sl_prediction <= 0:
             st.subheader("0%")
         elif sl_prediction >= 100:
             st.subheader("100%")
         else:
-            st.subheader(f"{rounded_sl}%")
+            st.subheader(f"{sl_prediction}%")
         st.sidebar.caption("Model: eXtreme Gradient Boosting (XGBoost)")
         st.sidebar.caption("Data timeframes: 10/3/2022-6/14/2024")
         st.sidebar.caption("Current accuracy: 90%")
